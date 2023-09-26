@@ -2,4 +2,4 @@
 # front controller
 include "bootstrap/init.php";
 
-echo $_ENV["DB_PORT"];
+echo random_element([1,2,3,4,5,6,7,8]);
