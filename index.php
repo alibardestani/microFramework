@@ -1,5 +1,8 @@
 <?php
 # front controller
+use App\Core\Routing\Route;
+
 include "bootstrap/init.php";
 
-echo \App\Utilities\Url::current();
+
+var_dump(Route::routes());
