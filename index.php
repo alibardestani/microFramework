@@ -1,8 +1,7 @@
 <?php
 # front controller
+include "bootstrap/init.php";
 use App\Core\Routing\Route;
 
-include "bootstrap/init.php";
-
-
-var_dump(Route::routes());
+$router = new \App\Core\Routing\Router();
+$router->run();

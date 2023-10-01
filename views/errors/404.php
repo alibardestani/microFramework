@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Green</title>
 </head>
-<body style="background: green">
-NOT FOUND ...
+<body style="background: #f1f1f1">
+<h2 style="margin: 100px;text-align: center">404<br>Page Not Found ...</h2>
 </body>
 </html>

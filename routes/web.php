@@ -2,13 +2,14 @@
 # /leader-board => get => XController@leaderboard
 use App\Core\Routing\Route;
 
-Route::get('/',function (){
+Route::get('/','HomeController@index');
+Route::get('/archive','ArchiveController@index');
+Route::add(['get','post','put'],'/a',function (){
     echo "welcome";
 });
-Route::get('/null');
-Route::post('/saveform',function (){
+Route::get('/b',function (){
     echo "save ok";
 });
-Route::put('/pururi',['Controller','Method']);
-Route::put('/pururi','Controller@Method');
+Route::put('/c',['Controller','Method']);
+Route::put('/d','Controller@Method');
 
