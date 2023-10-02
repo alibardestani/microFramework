@@ -9,7 +9,6 @@ class Route{
         $routes = ['methods' => $methods, 'url' => $uri, 'action'=>$action];
         self::$routes[] = $routes;
      }
-
      public static function get($uri, $action = null){
          self::add('get', $uri, $action);
      }
