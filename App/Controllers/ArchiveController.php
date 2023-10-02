@@ -7,4 +7,10 @@ class ArchiveController{
         # model ...
         view("archive.index");
     }
+    public function articles(){
+        view("archive.articles");
+    }
+    public function products(){
+        view("archive.products");
+    }
 }
