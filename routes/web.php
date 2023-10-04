@@ -1,10 +1,12 @@
 <?php
-# /leader-board => get => XController@leaderboard
+
 use App\Core\Routing\Route;
 
 Route::get('/','HomeController@index');
 
-Route::get('/todo/list','TodoController@list');
+Route::get('/post','PostController@single');
+
+Route::get('/todo/list','TodoController@list',[\App\Middleware\BlockFirefox::class,\App\Middleware\BlockIE::class]);
 Route::get('/todo/add','TodoController@add');
 Route::get('/todo/remove','TodoController@remove');
 
@@ -18,3 +20,4 @@ Route::add(['get','post','put'],'/a',function (){
 Route::get('/b',function (){
     view('archive.index');
 });
+

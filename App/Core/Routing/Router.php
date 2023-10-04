@@ -14,8 +14,16 @@ class Router{
         $this->request = new Request();
         $this->routes = Route::routes();
         $this->current_route = $this->findRoute($this->request);
+        # run middleware here
+//        $this->run_route_middleware();
     }
-
+    private function run_route_middleware(){
+        $middleware = $this->current_route['middleware'];
+        foreach ($middleware as $middleware_class){
+            $middleware_obj = new $middleware_class;
+            $middleware_obj->handle();
+        }
+    }
     public function findRoute(Request $request){
         foreach ($this->routes as $route){
             if (in_array($request->method(),$route['methods']) && $request->url() == $route['url']){
@@ -31,6 +39,7 @@ class Router{
     }
 
     public function run(){
+
         # 404 : url not exists
         if(is_null($this->current_route)){
             $this->dispatch404();
