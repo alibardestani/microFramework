@@ -13,8 +13,10 @@ class Router{
     public function __construct(){
         $this->request = new Request();
         $this->routes = Route::routes();
-        $this->current_route = $this->findRoute($this->request);
+        var_dump($this->findRoute($this->request) ?? null);
+        $this->current_route = $this->findRoute($this->request) ?? null;
         # run middleware here
+//        $this->run_global_middleware();
 //        $this->run_route_middleware();
     }
     private function run_route_middleware(){
@@ -26,11 +28,28 @@ class Router{
     }
     public function findRoute(Request $request){
         foreach ($this->routes as $route){
-            if (in_array($request->method(),$route['methods']) && $request->url() == $route['url']){
+            if (!in_array($request->method(),$route['methods'])){
+                return false;
+            }
+            if ($this->regex_matched($route)){
                 return $route;
             }
         }
         return null;
+    }
+    public function regex_matched($route){
+        global $request;
+        $pattern = "/^" . str_replace(['/','{','}'],['\/','(?<','>[-%\w]+)'],$route['url']) . "$/";
+        $result = preg_match($pattern,$this->request->url(),$matches);
+        if (!$result){
+            return false;
+        }
+        foreach ($matches as $key => $value){
+            if (!is_int($key)){
+                $request->add_route_param($key,$value);
+            }
+        }
+        return true;
     }
     public function dispatch404(){
         header("HTTP/1.1 404 Not Found");
@@ -39,7 +58,6 @@ class Router{
     }
 
     public function run(){
-
         # 404 : url not exists
         if(is_null($this->current_route)){
             $this->dispatch404();

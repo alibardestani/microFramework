@@ -28,6 +28,7 @@ function strContains($str, $needle, $case_sensitive = 0){
 function nice_dump($var){
 //    echo "<pre style='display: block; text-align: left; direction: ltr; background-color: #fff; border: 1px";
     var_dump($var);
+    echo "<br>";
 //    echo "</pre>";
 }
 function nice_dd($var){
