@@ -13,7 +13,7 @@ class Router{
     public function __construct(){
         $this->request = new Request();
         $this->routes = Route::routes();
-        var_dump($this->findRoute($this->request) ?? null);
+//        var_dump($this->findRoute($this->request) ?? null);
         $this->current_route = $this->findRoute($this->request) ?? null;
         # run middleware here
 //        $this->run_global_middleware();

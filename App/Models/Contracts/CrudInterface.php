@@ -4,7 +4,7 @@ namespace App\Models\Contracts;
 
 interface CrudInterface{
     # create (insert)
-    public function creat(array $data) : int;
+    public function create(array $new_data) : int;
     # Read (select) single | multiple
     public function find($id) : object;
     public function get(array $columns, array $where) : array;

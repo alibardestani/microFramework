@@ -3,20 +3,25 @@
 include "bootstrap/init.php";
 use App\Core\Routing\Route;
 
-$router = new \App\Core\Routing\Router();
-$router->run();
-
-//$route = '/post/{slug}';
-//$pattern = "/^" . str_replace(['/','{','}'],['\/','(?<','>[-%\w]+)'],$route) . "$/";
-//nice_dump($route);
-//nice_dump($pattern);
-
-//$route_pattern = "/^\/post\/(?<slug>[-%\w]+)$/";
-//$uri1 = '/post/what-is-php';
-//$uri2 = '/post/why-you-must-choose-7learn';
-//$uri3 = '/product/course-php';
+//$user_data = [
+//    'id' => rand(5, 1000),
+//    'title' => "Sara"
+//];
 //
-//$result = preg_match($route_pattern,$uri1,$matches);
-//nice_dump($result);
-//
-//nice_dump($matches);
+//$userModel = new \App\Models\User();
+//$userModel->create($user_data);
+//$user = $userModel->getAll();
+//var_dump($user);
+//$router = new \App\Core\Routing\Router();
+//$router->run();
+
+//$productModel = new \App\Models\Product();
+//$productModel->create($user_data);
+//for($i = 1; $i <= 20; $i++){
+//    $productModel->create([
+//        'id' => $i,
+//        'title' => "Product-$i"
+//    ]);
+//}
+//var_dump($productModel->getAll());
+//var_dump($_ENV['DB_NAME']);
