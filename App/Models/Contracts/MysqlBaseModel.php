@@ -8,7 +8,7 @@ use App\Core\Request;
 use PDO;
 
 class MysqlBaseModel extends BaseModel{
-    public function __construct()
+    public function __construct($id = null)
     {
         try{
 //            $this->connection = new PDO("mysql:dbname={$_ENV['DB_NAME']};host={$_ENV['DB_HOST']};port={$_ENV['DB_PORT']}", $_ENV['DB_USER'], $_ENV['DB_PASS']);
@@ -31,6 +31,19 @@ class MysqlBaseModel extends BaseModel{
         }   catch (\PDOException $e){
             echo "Connection Failed: " . $e->getMessage();
         }
+        if(!is_null($id)){
+            return $this->find($id);
+        }
+    }
+    public function remove() : ?int{
+        $record_id = $this->{$this->primaryKey};
+        return $this->delete([$this->primaryKey => $record_id]);
+//        return $record_id != null ? $record_id : null;
+    }
+    public function save(){
+        $record_id = $this->{$this->primaryKey};
+        $this->update($this->attributes, [$this->primaryKey => $record_id]);
+        return $this->find($record_id);
     }
     public function create(array $data) : int
     {
@@ -40,7 +53,11 @@ class MysqlBaseModel extends BaseModel{
     public function find($id) : object
     {
         $record = $this->connection->get($this->table, '*', [$this->primaryKey => $id]);
-        return (object)$record;
+        if(is_null($record)) return (object)null;
+        foreach ($record as $col => $val){
+            $this->attributes[$col] = $val;
+        }
+        return $this;
     }
     public function getAll(): array{
         return $this->connection->select($this->table, '*');
