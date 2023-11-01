@@ -2,26 +2,23 @@
 # front controller
 include "bootstrap/init.php";
 use App\Core\Routing\Route;
+use App\Models\User;
 
 //$user_data = [
-//    'id' => rand(5, 1000),
-//    'title' => "Sara"
+//    'name' => 'Sara',
+//    'email' => 'Sara@7learn.com',
+//    'password' => '123456'
 //];
-//
-//$userModel = new \App\Models\User();
-//$userModel->create($user_data);
-//$user = $userModel->getAll();
+
+//$userModel = new User();
+//$user = $userModel->get((array)'id', ['id' => '17']);
 //var_dump($user);
+$productModel = new \App\Models\Product();
+for($i = 1; $i <= 7; $i++){
+    $productModel->create([
+        'title' => "Product-$i",
+        'price' => rand(1, 100) * 100
+    ]);
+}
 //$router = new \App\Core\Routing\Router();
 //$router->run();
-
-//$productModel = new \App\Models\Product();
-//$productModel->create($user_data);
-//for($i = 1; $i <= 20; $i++){
-//    $productModel->create([
-//        'id' => $i,
-//        'title' => "Product-$i"
-//    ]);
-//}
-//var_dump($productModel->getAll());
-//var_dump($_ENV['DB_NAME']);

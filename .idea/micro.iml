@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mobiledetect/mobiledetectlib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mustangostang/spyc" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ua-parser/uap-php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/catfan/medoo" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
